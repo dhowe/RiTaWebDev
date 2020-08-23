@@ -860,6 +860,15 @@ span.sizes a {
   color: rgb(200, 200, 200) !important;
 }
 
+.downloadbox a:hover {
+  background-color: #00a7fd;
+  color: white !important;
+}
+
+.downloadbox a:not(:hover){
+  color: rgb(200, 200, 200) !important;
+}
+
 .downloadbox:hover>span {
   color: #00a7fd;
 }

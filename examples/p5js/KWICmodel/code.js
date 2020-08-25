@@ -1,12 +1,11 @@
-var buttons = [
+let txt, word, keywords = [
   "Gregor", "Samsa", "family", "being",
   "clerk", "room", "violin", "window"
-],
-  word = buttons[7], buttonX = 150, over, data, kwic, input;
+];
 
 function preload() {
 
-  data = loadStrings('../../data/kafka.txt');
+  txt = loadStrings('../../data/kafka.txt');
 }
 
 function setup() {
@@ -14,111 +13,68 @@ function setup() {
   createCanvas(800, 500);
   textFont('Times');
   textSize(18);
-  fill(0);
 
-  updateKWIC();
+  RiTa.concordance(txt.join('\n'));
+  word = RiTa.random(keywords);
+  drawButtons();
 }
 
-function updateKWIC() {
+function draw() {
 
-  kwic = RiTa.kwic(data.join('\n'), word, {
-    ignorePunctuation: true,
-    ignoreStopWords: true,
-    wordCount: 6
-  });
+  let kwic = RiTa.kwic(word, 6);
 
   background(250);
 
-  drawButtons();
+  let tw = textWidth(word) / 2;
 
-  if (kwic.length == 0) {
+  for (let i = 0; i < kwic.length; i++) {
 
+    let parts = kwic[i].split(word);
+    let x = width / 2, y = i * 20 + 75;
+
+    if (y > height - 20) return;
+
+    fill(0);
+    textAlign(RIGHT);
+    text(parts[0], x - tw, y);
+
+    fill(200, 0, 0);
     textAlign(CENTER);
-    text("Word not found", width / 2, height / 2);
+    text(word, x, y);
 
-  } else {
-
-    var tw = textWidth(word) / 2;
-
-    for (var i = 0; i < kwic.length; i++) {
-
-      //console.log(display[i]);
-      var parts = kwic[i].split(word);
-      var x = width / 2,
-        y = i * 20 + 75;
-
-      if (y > height - 20) return;
-
-      fill(0);
-      textAlign(RIGHT);
-      text(parts[0], x - tw, y);
-
-      fill(200, 0, 0);
-      textAlign(CENTER);
-      text(word, x, y);
-
-      fill(0);
-      textAlign(LEFT);
-      text(parts[1], x + tw, y);
-    }
+    fill(0);
+    textAlign(LEFT);
+    text(parts[1], x + tw, y);
   }
+  noLoop();
 }
+
+// TODO: remove below and replace with p5js createButton()
 
 function drawButtons() {
+  let posX = 150;
+  for (let i = 0; i < keywords.length; i++) {
+    let on = word == keywords[i] ? true : false;
+    let tw = textWidth(keywords[i]);
 
-  var posX = buttonX, posY = 40;
+    // change color for enabled button
+    fill((on ? 200 : 0), 0, 0);
+    let button = createButton(keywords[i]);
+    button.position(posX - 5, 64);
+    button.size(tw + 10, 20);
+    button.style('border-radius', '7px');
+    button.style('border', '1px solid #dcdcdc');
+    button.mousePressed(function(){
+      let buttons = selectAll('button');
+      for (let i = 0; i < buttons.length; i++) {
+        buttons[i].style('color','black');
+      }
+      button.style('color','red');
+      button.addClass('selected');
+      word = this.elt.innerText;
+      loop(); // re-render
+    });
 
-  for (var i = 0; i < buttons.length; i++) {
-
-    stroke(200);
-    var on = word == (buttons[i]) ? true : false;
-    var tw = textWidth(buttons[i]);
-    fill(!on && buttons[i] == over ? 235 : 255);
-    rect(posX - 5, 24, tw + 10, 20, 7);
-    fill((on ? 255 : 0), 0, 0);
-    text(buttons[i], posX, 40);
-    posX += tw + 20;
-  }
-}
-
-function inside(mx, my, posX, tw) {
-
-  return (mx >= posX - 5 && mx <= posX + tw + 5 && my >= 25 && my <= 44);
-}
-
-function mouseMoved() {
-
-  over = null;
-  var posX = buttonX, tw;
-
-  for (var i = 0; i < buttons.length; i++) {
-
-    tw = textWidth(buttons[i]);
-
-    if (inside(mouseX, mouseY, posX, tw)) {
-
-      over = buttons[i];
-      break;
-    }
-    posX += tw + 20;
-  }
-}
-
-function mouseClicked() {
-
-  var posX = buttonX, tw;
-
-  for (var i = 0; i < buttons.length; i++) {
-
-    tw = textWidth(buttons[i]);
-
-    if (inside(mouseX, mouseY, posX, tw)) {
-
-      word = buttons[i];
-      kwic = null;
-      updateKWIC();
-      break;
-    }
     posX += tw + 20;
   }
 }

@@ -1,21 +1,15 @@
+let rhymes, word;
 
-var rhymes, word;
-
-function setup()
-{
+function setup() {
   createCanvas(300, 300);
   fill(255);
   textFont("Georgia");
 
-  lexicon = new RiLexicon();
   findRhymes();
-
-  setInterval(findRhymes, 2000);
 }
 
-function draw()
-{
-  background(100,0,100);
+function draw() {
+  background(100, 0, 100);
 
   textAlign(RIGHT);
   textSize(36);
@@ -27,14 +21,16 @@ function draw()
   text(rhymes, 30, 73);
 }
 
-function findRhymes() { // called by timer
+function findRhymes() {
 
-  var tmp = '';
+  let tmp;
   do {
-    word = lexicon.randomWord();
-    tmp = lexicon.rhymes(word);
-  } while ( word && tmp.length < 3) 
+    word = RiTa.randomWord();
+    tmp = RiTa.rhymes(word, { limit: 13 });
+  }
+  while (tmp.length < 3)
 
-  var arr = subset(tmp, 0, min(tmp.length, 13)); // max of 13 words
-  rhymes = arr.join("\n");
+  rhymes = tmp.join("\n");
+
+  setTimeout(findRhymes, 2000);
 }

@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Haiku (dom)</title>
   <meta charset="utf-8">
-  <script src="../../lib/jquery-1.11.3.min.js"></script>
-  <script src="../../lib/yaml.min.js"></script>
+  <script src="../../lib/jquery-1.12.4.js"></script>
   <script src="../../lib/p5.min.js"></script>
-  <script src="../../../dist/rita.js"></script>
+  <script src="../../../dist/rita-web.js"></script>
   <script src="../../lib/prism.js"></script>
   <script src="../../lib/sourcecode.js"></script>
   <link rel='stylesheet' href='../../lib/prism.css' />
   <style>
     @font-face {
       font-family: Resagokr;
-      src: url("../../fonts/Resagokr.otf");
+      src: url("../../data/Resagokr.otf");
     }
 
     div {
@@ -34,25 +34,24 @@
 </head>
 
 <body>
-<!-- showing souce code -->
-    <a href="#source" id="view-source">source</a> <a href="#source2" id="view-source">grammar</a>  </font><br>
-<div class="code" id="source">
+  <a href="#source" id="view-source">source</a>
+  <a href="#source2" id="view-source">grammar</a><br>
+  <div class="code" id="source">
     <pre>
- <code id="source-code" class="language-java"></code>
- </pre>
+      <code id="source-code" class="language-java"></code>
+    </pre>
   </div>
 
-<div class="code" id="source2">
+  <div class="code" id="source2">
     <pre>
- <code id="grammar" class="language-yaml"></code>
- </pre>
+      <code id="grammar" class="language-json"></code>
+    </pre>
   </div>
-<!-- end of showing souce code -->
 
-  <div id='hdiv'>
-    <span id='line1'></span></br>
-    <span id='line2'></span></br>
-    <span id='line3'></span></br>
+  <div id='content'>
+    <span class='lines'></span></br>
+    <span class='lines'></span></br>
+    <span class='lines'></span></br>
   </div>
 </body>
 

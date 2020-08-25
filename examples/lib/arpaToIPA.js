@@ -57,8 +57,9 @@ function arpaToIPA(phones) {
     
     for (var i = 0; i < syllables.length; i++) {
         var ipa = syllableToIPA(syllables[i], needStress);
-        if (ipaPhones.length > 0 && !ipa.startsWith(IPA_STRESS) && !ipa.startsWith(IPA_2NDSTRESS))
+        if (ipaPhones.length > 0 && !ipa.startsWith(IPA_STRESS) && !ipa.startsWith(IPA_2NDSTRESS)) {
          ipa = " " + ipa;
+        }
         ipaPhones += ipa;
     }
 

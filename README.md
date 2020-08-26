@@ -1,2 +1,2 @@
 # RiTaWeb
-Website for RiTa project
+Website for RiTa version 2

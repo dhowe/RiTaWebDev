@@ -1,4 +1,4 @@
-var lines, markov, data1, data2, x = 160, y = 240;
+let lines, markov, data1, data2, x = 160, y = 240;
 
 function preload() {
 
@@ -12,14 +12,14 @@ function setup() {
   textFont('times', 16);
   textAlign(LEFT);
 
-  lines = ["click to (re)generate!"];
+  lines = ["click to (re)generate"];
 
   // create a markov model w' n=4
-  markov = new RiMarkov(4);
+  markov = new RiTa.Markov(4);
 
   // load text into the model
-  markov.loadText(data1.join(' '));
-  markov.loadText(data2.join(' '));
+  markov.addText(data1.join(' '));
+  markov.addText(data2.join(' '));
 
   drawText();
 }
@@ -31,8 +31,8 @@ function drawText() {
 }
 
 function mouseClicked() {
-
+  
+  lines = markov.generate(10);
   x = y = 50;
-  lines = markov.generateSentences(10);
   drawText();
 }

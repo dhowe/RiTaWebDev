@@ -1,166 +1,120 @@
-var dbug = false, ALL_PHONES = ['aa','ae','ah','ao','aw','ay','b','ch','d','dh','eh','er','ey','f','g','hh','ih','iy','jh', 'k','l', 'm','n','ng','ow','oy','p','r','s','sh','t','th','uh', 'uw','v','w','y','z','zh'];
-
 $(document).ready(function () {
 
-  var word, lexicon = new RiLexicon();
-  var sy, ph, ss, hues = colorGradient();
+  let features, hues;
 
-  clearBubble();
+  colorPalette();
   selectWord();
-  setInterval(selectWord, 4000); // every 4 sec
 
   function selectWord() {
 
-    // random word with <= 12 letters
-    do {
-      word = lexicon.randomWord();
-    } while (word && word.length > 12);
-
-    // get various features
-    sy = RiTa.getSyllables(word);
-    ph = RiTa.getPhonemes(word);
-    ss = RiTa.getStresses(word);
-
-    dbug && console.log(sy);
-
-    var tags = RiTa.getPosTags(word, true);
-    var pos = tagName(tags[0]);
-    var ipaPhones = ipaPhones = arpaToIPA(lexicon._getRawPhones(word));
+    word = RiTa.randomWord({ maxLength: 12 });
+    features = RiTa.analyze(word, { simple: true });
 
     $('#word').text(word);
-    $('#pos').text(pos);
-    $('#ipa').text("/" + ipaPhones + "/");
+    $('#pos').text(tags[features.pos]);
+    $('#ipa').text(ipaPhones(word));
 
-    refreshBubble(ph.split('-'));
-
-    setTimeout(drop, 2000);
-    setTimeout(clearBubble, 3500);
+    updateBubbles();
+    setTimeout(dropBubbles, 2000);
   }
 
-  function clearBubble() {
-    dbug && console.log("clear");
+  function updateBubbles(phs) {
+
+    addStresses(features.stresses, features.syllables);
+    addSyllables(features.syllables);
+    let phones = features.phones.split('-');
+    $('.bubbles').children().each(function (i) {
+      if (i < phones.length) {
+        $(this).text(phones[i]);
+        $(this).css("background-color", "hsla("
+          + phonemeColor(phones[i]) + ", 90%, 45%, 0.6)");
+      }
+    });
+  }
+
+  function dropBubbles() {
+    $('.bubbles').children().each(function (i) {
+      (function (bub, j) {
+        setTimeout(() => $(bub).animate({ 'margin-top': 180 }, "slow"), 40 * j);
+      })(this, i);
+    });
+    setTimeout(clearBubbles, 1500);
+  }
+
+  function clearBubbles() {
 
     $('.bubbles').children().each(function (i, val) {
-       // reset stress
-      if( $(this).hasClass("stressed"))
+      // reset stress
+      if ($(this).hasClass("stressed"))
         $(this).removeClass("stressed");
 
       //reset position
-      $(this).css({
-        'margin-top': ' 5px'
-      });
+      $(this).css({ 'margin-top': ' 5px' });
 
       // clear the content
       $(this).text("");
       $(this).css("background-color", "transparent");
-
     });
-  }
 
-  function refreshBubble(phs) {
-
-    dbug && console.log("refresh");
-
-    $('.bubbles').children().each(function (i, val) {
-
-      // change the phones and color
-      if (i < phs.length) {
-
-        $(this).text(phs[i]);
-        $(this).css("background-color", "hsla(" + phonemeColor(phs[i]) + ", 90%, 45%, 0.6)");
-        addStress(ss, sy);
-        addSyllables(sy);
-
-      }
-
-    });
-  }
-
-  function drop() {
-
-    $('.bubbles').children().each(function (index) {
-      (function (that, i) {
-        var t = setTimeout(function () {
-          $(that).animate({
-            'margin-top': 180,
-          }, "slow");
-        }, 40 * i);
-      })(this, index);
-    });
+    setTimeout(selectWord, 1000);
   }
 
   function addSyllables(syllables) {
-
-    dbug && console.log("addSyllables");
-
-    var syllable = syllables.split("/");
-    for (var i = 0, past = 0; i < syllable.length; i++) {
-      var phs = syllable[i].split("-");
-      //add extra space between each syllables
+    let syllable = syllables.split("/");
+    for (let i = 0, past = 0; i < syllable.length; i++) {
       $('.bubbles').children().eq(past).css("margin-left", "10px");
-
-      for (var j = 1; j < phs.length; j++) {
-        (function (j) {
-          var bubble = $('.bubbles').children().eq(j + past);
-          if(bubble.hasClass('stressed'))
-             bubble.css("margin-left", "-20px");
-           else
-            bubble.css("margin-left", "-15px");
-        })(j);
+      let phs = syllable[i].split("-");
+      for (let j = 1; j < phs.length; j++) {
+        let bubble = $('.bubbles').children().eq(j + past);
+        bubble.css("margin-left", bubble.hasClass('stressed') ? "-20px" : "-15px");
       }
       past += phs.length;
     }
   }
 
-  function addStress(stresses, syllables, bubbles) {
-    dbug && console.log("addStress");
+  function addStresses(stresses, syllables) {
+    
     // Split stresses and syllables
-    var stress = stresses.split('/'), syllable = syllables.split('/');
-
-    for (var i = 0, past = 0; i < stress.length; i++) {
-
-      var phs = syllable[i].split('-');
-
+    let stress = stresses.split('/');
+    let sylls = syllables.split('/');
+    for (let i = 0, past = 0; i < stress.length; i++) {
+      let phs = sylls[i].split('-');
       // if the syllable is stressed, grow its bubbles
-      if (parseInt(stress[i]) == 1) {
-        for (var j = 0; j < phs.length; j++) {
-          (function (j) {
-            $('.bubbles').children().eq(j + past).addClass("stressed");
-          })(j);
+      if (stress[i] === '1') {
+        for (let j = 0; j < phs.length; j++) {
+          $('.bubbles').children().eq(j + past).addClass("stressed");
         }
       }
       past += phs.length;
     }
   }
 
-  function tagName(tag) {
-    if (tagsDict == null) {
-      var tagsDict = {
-        'n': 'Noun',
-        'v': 'Verb',
-        'r': 'Adverb',
-        'a': 'Adjective'
-      };
-    }
-    return tag != null ? tagsDict[tag] : null;
+  function ipaPhones(aWord) {
+    let raw = RiTa.lexicon().rawPhones(aWord);
+    return "/" + arpaToIPA(raw) + "/";
   }
-
+  
   function phonemeColor(phoneme) {
-    var idx = ALL_PHONES.indexOf(phoneme);
+    let idx = RiTa.PHONES.indexOf(phoneme);
     return idx > -1 ? hues[idx] : 0;
   }
 
-  function colorGradient() {
-    var tmp = [];
-    for (var i = 0; i < ALL_PHONES.length; i++) {
-      var h = Math.floor(map(i, 0, ALL_PHONES.length, .2 * 360, .8 * 360));
-      tmp[i] = h;
+  function colorPalette() {
+    hues = [];
+    for (let i = 0; i < RiTa.PHONES.length; i++) {
+      hues[i] = Math.floor(map(i, 0, RiTa.PHONES.length, .2 * 360, .8 * 360));
     }
-    return tmp;
+    return hues;
   }
 
-  function map(value, low1, high1, low2, high2) {
+  function map(value, low1, high1, low2, high2) { // p5js
     return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
   }
+});
 
-}); //jquery wrapper
+const tags = {
+  'n': 'noun',
+  'v': 'verb',
+  'r': 'adverb',
+  'a': 'adjective'
+};

@@ -1,9 +1,9 @@
-var font, grammar, lines, yaml;
+let font, grammar, lines, json;
 
 function preload() {
 
-  font = loadFont('../../fonts/Resagokr.otf');
-  yaml = loadStrings('../../data/haiku.yaml');
+  font = loadFont('../../data/Resagokr.otf');
+  json = loadJSON('../../data/haiku.json');
 }
 
 function setup() {
@@ -11,7 +11,8 @@ function setup() {
   createCanvas(650, 200);
   textFont(font, 30);
   textAlign(CENTER);
-  grammar = new RiGrammar(yaml.join('\n'));
+
+  grammar = new RiTa.Grammar(json);
   lines = ["click to", "generate", "a haiku"];
 }
 
@@ -25,8 +26,9 @@ function draw() {
 
 function mouseReleased() {
 
-  var result = grammar.expand();
-  var haiku = result.split("%");
-  for (var i = 0; i < lines.length; i++)
+  let result = grammar.expand();
+  let haiku = result.split("%");
+  for (let i = 0; i < lines.length; i++) {
     lines[i] = haiku[i];
+  }
 }

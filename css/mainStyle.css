@@ -339,7 +339,6 @@ Desc section
 }
 
 #description-wrapper p {
-  text-align: justify;
   margin: 20px auto;
   line-height: 30px
 }
@@ -713,7 +712,7 @@ Desc section
   text-decoration: none;
 }
 
-.panel-heading a:before {
+.panel-heading:not(:last-child) a:before {
   font-family: 'Glyphicons Halflings';
   content: "\e114";
   float: right;
@@ -857,6 +856,15 @@ span.sizes a {
 }
 
 .downloadbox:hover a:not(.default) {
+  color: rgb(200, 200, 200) !important;
+}
+
+.downloadbox a:hover {
+  background-color: #00a7fd;
+  color: white !important;
+}
+
+.downloadbox a:not(:hover){
   color: rgb(200, 200, 200) !important;
 }
 

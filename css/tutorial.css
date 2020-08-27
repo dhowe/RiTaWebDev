@@ -1,8 +1,6 @@
 /*Tutorial*/
 .gd-section.tutorial p{
-    line-height: 1.618rem;
     font-family:"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 1rem;
     -webkit-margin-before: 1em;
     -webkit-margin-after: 1em;
     -webkit-margin-start: 0px;
@@ -43,7 +41,7 @@
 }
 .tutorial h4{
     margin-left: -150px;
-    font-size: 1.6rem;
+    font-size: 1.2em;
 }
 .tutorial h4 span{
     padding:0 1rem;
@@ -96,10 +94,6 @@ span.ref{
 .tutorial .ref a{
     color:grey;
 }
-.sublist{
-    line-height:1.8rem;
-}
-
 
 /* Start of custom grid */
 

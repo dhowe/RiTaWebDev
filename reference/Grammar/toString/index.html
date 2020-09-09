@@ -68,7 +68,7 @@
 									<td>Returns a formatted version of this grammar</td>
 								</tr>
 
-					
+
 
 <tr class='Example'>
 	<th scope='row'>Example</th>
@@ -77,17 +77,17 @@
 
 			<!-- EXAMPLE  -->
 			<!--img src="../../../img/RiTa-logo4.png" alt="example pic" /-->
-			<pre class="margin">rm = new Grammar(rules);<br/>s = rm.toString();</pre>
+			<pre class="margin">rm = new Grammar(rules);<br/><br>s = rm.toString(); //return default formatted string<br><br>s = rm.toString('/'); //return a string with '/' marking the end of each rule</pre>
 		</div>
 	</td>
 </tr>
-								<tr class='Parameters' style='display:none'>
+								<tr class='Parameters'>
 									<th scope="row">Parameters</th>
 									<td>
 										<!-- PARAMETERS  -->
 
 										<table cellpadding="0" cellspacing="0" border="0"
-											class="sub-table">tmp_parameters</table>
+											class="sub-table"><tr class=''><th width='25%' scope='row' class=nobold>String or char</th><td width='75%'>a String or a char to mark the end of each rule</td></tr></table>
 									</td>
 								</tr>
 
@@ -117,13 +117,13 @@
 
 			<tr class='Syntax'>
 				<th scope="row">Syntax</th>
-			
+
 				<!-- SYNTAX  -->
 				<td>
 					<pre>toString();</pre>
 				</td>
 			</tr>
-								
+
 
 								<tr class="">
 									<th scope="row">Platform</th>

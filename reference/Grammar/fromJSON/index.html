@@ -58,14 +58,15 @@
 									<th scope="row">Name</th>
 
 									<!-- METHOD NAME -->
-									<td><h3>toString</h3></td>
+									<td><h3>fromJSON</h3></td>
 								</tr>
 
 								<tr class="">
 									<th scope="row">Description</th>
 
 									<!-- DESCRIPTION  -->
-									<td>Returns a formatted version of this grammar</td>
+									<td>Loads a grammar from a JSON object or string. Notes that this is a static method, which means
+									 you can only use it before instantiating.</td>
 								</tr>
 
 
@@ -77,7 +78,7 @@
 
 			<!-- EXAMPLE  -->
 			<!--img src="../../../img/RiTa-logo4.png" alt="example pic" /-->
-			<pre class="margin">rm = new Grammar(rules);<br/><br>s = rm.toString(); //return default formatted string<br><br>s = rm.toString('/'); //return a string with '/' marking the end of each rule</pre>
+			<pre class="margin">rg = Grammar.fromJSON(grammarRules); <br>rg.expand();</pre>
 		</div>
 	</td>
 </tr>
@@ -87,7 +88,7 @@
 										<!-- PARAMETERS  -->
 
 										<table cellpadding="0" cellspacing="0" border="0"
-											class="sub-table"><tr class=''><th width='25%' scope='row' class=nobold>String or char</th><td width='75%'>a String or a char to mark the end of each rule</td></tr></table>
+											class="sub-table"><tr class=''><th width='25%' scope='row' class=nobold>String or object</th><td width='75%'>a String or JSON object representation of the grammar</td></tr></table>
 									</td>
 								</tr>
 
@@ -98,7 +99,7 @@
 										<!-- RETURNS/TYPE (for variables)  -->
 
 										<table cellpadding="0" cellspacing="0" border="0"
-											class="sub-table"><tr class=''><th width='25%' scope='row' class=nobold>String</th><td width='75%'>this object as a String</td></tr></table>
+											class="sub-table"><tr class=''><th width='25%' scope='row' class=nobold>object</th><td width='75%'>a Grammar object</td></tr></table>
 									</td>
 								</tr>
 
@@ -120,7 +121,7 @@
 
 				<!-- SYNTAX  -->
 				<td>
-					<pre>toString();</pre>
+					<pre>Grammar.fromJSON(grammarRules);</pre>
 				</td>
 			</tr>
 

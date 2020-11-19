@@ -103,9 +103,9 @@
                 </p>
               </div>
 
-              <p>You can use <a href="../reference/RiTa/phonemes/index.html"><b>RiTa.phonemes</b></a> to analyse the phonemes.</p>
+              <p>You can use <a href="../reference/RiTa/phonemes/index.html"><b>RiTa.phones</b></a> to analyse the phonemes.</p>
 
-              <pre><code class="language-javascript">RiTa.phonemes("An elephant is a mammal");</code></pre>
+              <pre><code class="language-javascript">RiTa.phones("An elephant is a mammal");</code></pre>
 
               <p>It will return: 'ae-n eh-l-ax-f-ax-n-t ih-z ey m-ae-m-ax-l'.</p><br/>
               <div class="ref">
@@ -146,11 +146,17 @@
                 article, etc.
               </p>
 
-              <p>You can use <a href="../reference/RiTa/pos/index.html"><b>RiTa.pos</b></a> to
-                 analyze the part-of-speech (or POS) for you.
+              <p>You can use <a href="../reference/RiTa/analyze/"><b>RiTa.analyze</b></a> to
+                 analyze the the input and it will return the part-of-speech (or POS) together with phones, stresses and syllables.
               </p>
-               <pre><code class="language-javascript">RiTa.pos("I am hungry");</code></pre>
-               <p>The outcome would be: ["prp", "vbp", "jj"]</p>
+               <pre><code class="language-javascript">RiTa.analyze("I am hungry");</code></pre>
+               <p>The outcome would be: <br>{<br>  
+                  phones: 'ay ae-m hh-ah-ng-g-r-iy',<br>  
+                  stresses: '1 1 1/0',<br>  
+                  syllables: 'ay ae-m hh-ah-ng/g-r-iy',<br>  
+                  pos: 'prp vbp jj',<br>  
+                  tokens: 'I am hungry'<br>  
+              }</p>
               <p>
               Here you can find <a href="../reference/PennTags.html">a reference list of PENN part-of-speech tagger in RiTa</a>.
               </p>

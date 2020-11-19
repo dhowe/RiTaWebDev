@@ -116,12 +116,12 @@
             </br>
 An example, in JavaScript:
               <pre><code class="language-javascript">
-  var args = {
+  let args = {
     tense: RiTa.PAST_TENSE,
     number: RiTa.SINGULAR,
     person: RiTa.THIRD_PERSON
   };
-  var result = RiTa.conjugate("swim", args);</code></pre>
+  let result = RiTa.conjugate("swim", args);</code></pre>
 
               <p>The outcome of this example will be "swam".</p>
               <div id="content" width=200 height=200></div>
@@ -152,14 +152,8 @@ An example, in JavaScript:
 
               <pre><code class="language-javascript">RiTa.stem("write written writing");</code></pre>
               <p>The result would be: writ writ writ.</p>
-
-                            <p>In RiTa, there are three different stemming algorithm for you to choose from.
-              </p>
-              <p>
-                <b>RiTa.LANCASTER</b> (the default), <b>RiTa.PORTER</b>, or <b>RiTa.PLING</b>
-              </p>
               <div class="ref">
-                <p> Note: see <a href="http://text-processing.com/demo/stem/">http://text-processing.com/demo/stem/</a> for comparison of Lancaster and Porter algorithms or <a href="http://mpii.de/yago-naga/javatools">http://mpii.de/yago-naga/javatools</a> for info on the PlingStemmer
+                <p> Note: RiTa use Pling Stemmer, see <a href="http://mpii.de/yago-naga/javatools">http://mpii.de/yago-naga/javatools</a> for info on the Pling Stemmer
                 </p>
               </div>
             </div>
@@ -243,7 +237,7 @@ An example, in JavaScript:
               </p>
 
               <p>An example of untokenizing in RiTa:</p>
-              <pre><code class="language-javascript">  var words = ['I', 'want', 'to', 'have', 'a', 'cup', 'of', 'coffee', '.'];
+              <pre><code class="language-javascript">  let words = ['I', 'want', 'to', 'have', 'a', 'cup', 'of', 'coffee', '.'];
   RiTa.untokenize(words);</code></pre>
 
                 <p>

@@ -87,7 +87,7 @@
 										<!-- PARAMETERS  -->
 
 										<table cellpadding="0" cellspacing="0" border="0"
-											class="sub-table"><tr class=''><th width='25%' scope='row' class=nobold>int</th><td width='75%'>numElements</td></tr></table>
+											class="sub-table"><tr class=''><th width='25%' scope='row' class=nobold>int<br>(or an array, this option not available in Java yet)</th><td width='75%'>numElements<br> (or an array to randomly re-order, this option not available in Java yet)</td></tr></table>
 									</td>
 								</tr>
 
@@ -98,7 +98,7 @@
 										<!-- RETURNS/TYPE (for variables)  -->
 
 										<table cellpadding="0" cellspacing="0" border="0"
-											class="sub-table"><tr class=''><th width='25%' scope='row' class=nobold>int[]</th><td width='75%'>unique integers from 0 to numElements-1</td></tr></table>
+											class="sub-table"><tr class=''><th width='25%' scope='row' class=nobold>int[]<br>(or another array if an array is used as the parameter)</th><td width='75%'>unique integers from 0 to numElements-1<br>(or the re-ordered array if an array is used as parameter)</td></tr></table>
 									</td>
 								</tr>
 
@@ -120,7 +120,7 @@
 			
 				<!-- SYNTAX  -->
 				<td>
-					<pre>RiTa.randomOrdering(numElements);</pre>
+					<pre>RiTa.randomOrdering(numElements);<br>RiTa.randomOrdering(array);//not available in Java yet</pre>
 				</td>
 			</tr>
 								

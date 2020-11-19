@@ -87,7 +87,7 @@
 										<!-- PARAMETERS  -->
 
 										<table cellpadding="0" cellspacing="0" border="0"
-											class="sub-table"><tr class=''><th width='25%' scope='row' class=nobold>String OR String array</th><td width='75%'>a single token or array of tokens (strings)</td></tr></table>
+											class="sub-table"><tr class=''><th width='25%' scope='row' class=nobold>String OR String[]</th><td width='75%'>a single token or array of tokens (strings)</td></tr><tr class=''><th width='25%' scope='row' class=nobold>double</th><td width='75%'>temperature (optional)</td></tr></table>
 									</td>
 								</tr>
 
@@ -98,7 +98,7 @@
 										<!-- RETURNS/TYPE (for variables)  -->
 
 										<table cellpadding="0" cellspacing="0" border="0"
-											class="sub-table"><tr class=''><th width='25%' scope='row' class=nobold>object</th><td width='75%'>An object (JS) or HashMap (Java) mapping words to probabilities</td></tr></table>
+											class="sub-table"><tr class=''><th width='25%' scope='row' class=nobold>object<br>Or Map in Java</th><td width='75%'>An object (JS) or HashMap (Java) mapping words to probabilities</td></tr></table>
 									</td>
 								</tr>
 
@@ -120,7 +120,7 @@
 			
 				<!-- SYNTAX  -->
 				<td>
-					<pre>probabilities(pathString);<br/>probabilities(pathArray);</pre>
+					<pre>probabilities(pathString);<br/>probabilities(pathArray);<br>probabilities(pathString, temperature);<br/>probabilities(pathArray, temperature);</pre>
 				</td>
 			</tr>
 								

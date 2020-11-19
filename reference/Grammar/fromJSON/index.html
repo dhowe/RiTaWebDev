@@ -88,7 +88,7 @@
 										<!-- PARAMETERS  -->
 
 										<table cellpadding="0" cellspacing="0" border="0"
-											class="sub-table"><tr class=''><th width='25%' scope='row' class=nobold>String or object</th><td width='75%'>a String or JSON object representation of the grammar</td></tr></table>
+											class="sub-table"><tr class=''><th width='25%' scope='row' class=nobold>String or object</th><td width='75%'>a String or JSON object representation of the grammar</td></tr><tr class=''><th width='25%' scope='row' class=nobold>object<br>Or Map in Java</th><td width='75%'>the context for any referenced variables or functions (optional)</td></tr></table>
 									</td>
 								</tr>
 
@@ -99,7 +99,7 @@
 										<!-- RETURNS/TYPE (for variables)  -->
 
 										<table cellpadding="0" cellspacing="0" border="0"
-											class="sub-table"><tr class=''><th width='25%' scope='row' class=nobold>object</th><td width='75%'>a Grammar object</td></tr></table>
+											class="sub-table"><tr class=''><th width='25%' scope='row' class=nobold>Grammar</th><td width='75%'>this Grammar</td></tr></table>
 									</td>
 								</tr>
 
@@ -121,7 +121,7 @@
 
 				<!-- SYNTAX  -->
 				<td>
-					<pre>Grammar.fromJSON(grammarRules);</pre>
+					<pre>Grammar.fromJSON(grammarRules);<br>Grammar.fromJSON(grammarRules, context);</pre>
 				</td>
 			</tr>
 

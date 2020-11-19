@@ -71,7 +71,7 @@
 
                       <!-- EXAMPLE  -->
                       <!--img src="../../../img/RiTa-logo4.png" alt="example pic" /-->
-                      <pre class="margin">rg = new Grammar(StringOrObject);<br>result = rg.expand();</pre>
+                      <pre class="margin">rg = new Grammar(ObjectOrMapInJava);<br>result = rg.expand();</pre>
                       RiTa grammars are valid
                       <a href="http://json.org" target="new">JSON</a>
                       or
@@ -105,7 +105,7 @@
 										<!-- PARAMETERS  -->
 
 										<table cellpadding="0" cellspacing="0" border="0"
-											class="sub-table"><tr class=''><th width='25%' scope='row' class=nobold>String or Object</th><td width='75%'>the YAML/JSON grammar</td></tr></table>
+											class="sub-table"><tr class=''><th width='25%' scope='row' class=nobold>object<br>Or Map in Java</th><td width='75%'>the YAML/JSON grammar</td></tr><tr class=''><th width='25%' scope='row' class=nobold>object<br>Or Map in Java</th><td width='75%'>context (optional)</td></tr></table>
 									</td>
 								</tr>
 
@@ -114,7 +114,7 @@
 
           				<!-- SYNTAX  -->
           				<td>
-          					<pre>// Initialize an empty Grammar object<br><br>rg = new Grammar();<br><br>// Or specify a grammar as a YAML/JSON string<br><br>rg = Grammar("&lt;start&gt;: [ &lt;rule&gt;, terminal ] ...");<br><br>//Or specify a grammar in a YAML/JSON object<br><br>rg = Grammar(myJsonObject);</pre>
+          					<pre>// Initialize an empty Grammar object<br><br>rg = new Grammar();<br><br>//Or specify a grammar in a YAML/JSON object<br><br>rg = Grammar(myJsonObject);<br><br>//Or with context<br><br>rg = Grammar(myJsonObject, context);</pre>
           				</td>
           			</tr>
 

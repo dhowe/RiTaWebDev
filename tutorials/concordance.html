@@ -104,7 +104,7 @@ Summer is hot. It is hot today.</p></div>
     </p>
 </div>
 
-<p>In RiTa, we can generate the above concordance with the <a href="../reference/RiTa/concordance/index.html"><b>RiTa.concordance()</b></a> function.</p>
+<p>In RiTa, we can generate the above concordance with the <a href="../reference/RiTa/concordance/index.html"><b>RiTa.concordance</b></a> function.</p>
 <pre><code class="language-javascript">  let args = {
     ignoreCase: true
   };
@@ -121,11 +121,14 @@ Summer is hot. It is hot today.</p></div>
 
 <br />&nbsp;</br>
 
-<p>In RiTa, we can achieve this with the <a href="../reference/RiTa/kwic/index.html"><b>RiTa.kwic()</b></a> function, as follows:</p>
-<pre><code class="language-javascript">  //must call concordance() before calling kwic()
+<p>In RiTa, we can achieve this with the <a href="../reference/RiTa/concordance/"><b>RiTa.concordance</b></a> and <a href="../reference/RiTa/kwic/index.html"><b>RiTa.kwic</b></a> function, as follows:</p>
+<pre><code class="language-javascript">  //must call concordance() to build the model before calling kwic()
   RiTa.concordance(text);
   let lines = RiTa.kwic(text, numWords);
 </code></pre>
+<div class="ref">
+  <p>Note: RiTa.kwic is not available in Java yet</p>
+</div>
 
 <br />
 

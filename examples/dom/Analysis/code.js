@@ -83,6 +83,7 @@ $(document).ready(function () {
       if (stress[i] === '1') {
         for (let j = 0; j < phs.length; j++) {
           $('.bubbles').children().eq(j + past).addClass("stressed");
+          $('.bubbles').children().eq(j + past).css({'margin-top' : '0px'});
         }
       }
       past += phs.length;

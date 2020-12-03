@@ -4,7 +4,6 @@ $(document).ready(function () {
 
   markov = new RiTa.Markov(4);
 
-  // a nicer way to do this?
   $.get('../../data/kafka.txt', function(data1) {
     $.get('../../data/wittgenstein.txt', function(data2) {
       markov.addText(data1);

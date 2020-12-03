@@ -66,8 +66,6 @@ function ipaPhones(aWord) {
   return "/" + arpaToIPA(raw) + "/";
 }
 
-// TODO: redo with new class style
-
 function Bubble() {
 
   this.gspd = 0; // grow speed

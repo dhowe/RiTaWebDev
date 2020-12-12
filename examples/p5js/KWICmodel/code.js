@@ -49,8 +49,6 @@ function draw() {
   noLoop();
 }
 
-// TODO: remove below and replace with p5js createButton()
-
 function drawButtons() {
   let posX = 150;
   for (let i = 0; i < keywords.length; i++) {

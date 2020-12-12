@@ -131,37 +131,24 @@ An example, in JavaScript:
 
             <div id="Stemming" class="pad-small">
               <h5 class="sub">Stemming</h5>
-              <p>Stemming means reducing a word to its base, or stem. For example, the words 'writing', 'wrote' and 'written' all have the stem 'write'. A stemmer takes a word or list of words as input and return the stem(s).
+              <p>Stemming means reducing a word to its base, or stem. For example, the words 'write', 'writes' and 'writing' all have the stem 'write'. A stemmer takes a word as input and return the stem.
               </p>
-              <p>Stemming is useful when you are doing any kind of text-analysis. This is because different verb conjugations, different endings for singular and plural, different adjective forms, etc. can all make it difficult to discern the importance of specific words in a text.
+              <p>Stemming is useful when you are doing text-analysis. This is because different verb conjugations, different endings for singular and plural, different adjective forms, etc. can all make it difficult to discern the importance of words in a text.
               </p>
               <p>Let's take the following paragraph as an example: </p>
               <div class="example">
                 <p><em>I wrote a book about cats, after I had written a short article on cats. Currently I'm writing about dogs. Next year I'll write poems. But I produced my best writings when I was younger.</em>
                 </p>
               </div>
-              <p>It's obvious (to a human) that this text is mainly concerned with <em>writing</em>. But when you run a program to analyze it, the program will come to the conclusion that it's about <em>cats</em>, because the word 'cats' is the only word (aside from
+              <p>It's obvious (to a human) that this text is mainly concerned with <em>writing</em>. But when you run a program to analyze it, the program could come to the conclusion that it's about <em>cats</em>, because the word 'cats' is the only word (aside from
                 words like 'I', 'a', etc.) that occurs more than once.
               </p>
-              <p>But if you stem the text before analyzing it, replacing all words with their stems, the program will correctly tell you that it's a text about writing. This because, after stemming, the word 'write' will appear five times (because 'writing',
-                'written', 'writings' and 'wrote' have been replaced by 'write').
+              <p>But if you stem the text before analyzing it, replacing all words with their stems, the program can correctly tell you that it's a text about writing. This because, after stemming (depending on the stemmer you use), the word 'write' will appear five times (with 'writing',
+                'written', 'writings' and 'wrote' have been replaced by 'write'). You can see a similar example below in RiTa, which uses the so-called 'Snowball Stemmer':
               </p>
-
               <h5><a href="../reference/RiTa/stem/index.html">RiTa.stem</a></h5>
-
-
-              <pre><code class="language-javascript">RiTa.stem("write written writing");</code></pre>
-              <p>The result would be: writ writ writ.</p>
-
-                            <p>In RiTa, there are three different stemming algorithm for you to choose from.
-              </p>
-              <p>
-                <b>RiTa.LANCASTER</b> (the default), <b>RiTa.PORTER</b>, or <b>RiTa.PLING</b>
-              </p>
-              <div class="ref">
-                <p> Note: see <a href="http://text-processing.com/demo/stem/">http://text-processing.com/demo/stem/</a> for comparison of Lancaster and Porter algorithms or <a href="http://mpii.de/yago-naga/javatools">http://mpii.de/yago-naga/javatools</a> for info on the PlingStemmer
-                </p>
-              </div>
+              <pre><code class="language-javascript">RiTa.stem("write writes writing writings.");</code></pre>
+              <p>The result would be: write write write write.</p>
             </div>
             <hr />
             <div id="Plurals/Singulars" class="pad-small">

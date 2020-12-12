@@ -41,7 +41,7 @@
                   <!-- CLASS -->
                   <td>
                     <h3>
-                      RiTa
+                      <a href="../../Grammar/Grammar/index.html">Grammar</a>
                     </h3>
                   </td>
                 </tr>
@@ -50,14 +50,14 @@
                   <th scope="row">Name</th>
                   <!-- METHOD NAME -->
                   <td>
-                    <h4>stresses</h4>
+                    <h4>fromJSON</h4>
                   </td>
                 </tr>
 
                 <tr class="">
                   <th scope="row">Description</th>
                   <!-- DESCRIPTION  -->
-                  <td>Analyzes the input and returns a new string containing the stresses for each syllable of the input text </td>
+                  <td>Loads a grammar from a JSON object or string</td>
                 </tr>
 
                 <tr class='Example'>
@@ -67,7 +67,7 @@
 
                       <!-- EXAMPLE  -->
                       <!--img src="../../../img/RiTa-logo4.png" alt="example pic" /-->
-                      <pre class="margin">RiTa.stresses("apple"); // returns -> 1/0</pre>
+                      <pre class="margin">rg = Grammar.fromJSON(grammarRules);</pre>
                     </div>
                   </td>
                 </tr>
@@ -76,7 +76,7 @@
                   <td>
                     <!-- PARAMETERS  -->
 
-                    <table cellpadding="0" cellspacing="0" border="0" class="sub-table"><tr class=''><th width='25%' scope='row' class=nobold>String</th><td width='75%'>text to analyze</td></tr></table>
+                    <table cellpadding="0" cellspacing="0" border="0" class="sub-table"><tr class=''><th width='25%' scope='row' class=nobold>String or Object</th><td width='75%'>a String or JSON object representation of the grammar</td></tr><tr class=''><th width='25%' scope='row' class=nobold>Object<br>(or Map in Java)</th><td width='75%'>the context for any referenced variables or functions (optional)</td></tr></table>
                   </td>
                 </tr>
 
@@ -86,7 +86,7 @@
                   <td>
                     <!-- RETURNS/TYPE (for variables)  -->
 
-                    <table cellpadding="0" cellspacing="0" border="0" class="sub-table"><tr class=''><th width='25%' scope='row' class=nobold>String</th><td width='75%'>e.g., '1/0/1', with 1's meaning 'stressed', and 0's meaning 'unstressed', </td></tr></table>
+                    <table cellpadding="0" cellspacing="0" border="0" class="sub-table"><tr class=''><th width='25%' scope='row' class=nobold>Grammar</th><td width='75%'>this Grammar object</td></tr></table>
                   </td>
                 </tr>
 
@@ -108,7 +108,7 @@
 
                   <!-- SYNTAX  -->
                   <td>
-                    <pre>RiTa.stresses(word);</pre>
+                    <pre>Grammar.fromJSON(grammarRules);<br>Grammar.fromJSON(grammarRules, context);</pre>
                   </td>
                 </tr>
 

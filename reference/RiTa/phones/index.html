@@ -50,14 +50,14 @@
                   <th scope="row">Name</th>
                   <!-- METHOD NAME -->
                   <td>
-                    <h4>stresses</h4>
+                    <h4>phones</h4>
                   </td>
                 </tr>
 
                 <tr class="">
                   <th scope="row">Description</th>
                   <!-- DESCRIPTION  -->
-                  <td>Analyzes the input and returns a new string containing the stresses for each syllable of the input text </td>
+                  <td>Returns a string containing all <a target=_new href='../../PhonemeTags.php'>phones</a> for the input text</td>
                 </tr>
 
                 <tr class='Example'>
@@ -67,7 +67,7 @@
 
                       <!-- EXAMPLE  -->
                       <!--img src="../../../img/RiTa-logo4.png" alt="example pic" /-->
-                      <pre class="margin">RiTa.stresses("apple"); // returns -> 1/0</pre>
+                      <pre class="margin"><br/>RiTa.phones("apple"); // returns -> ae-p-ah-l <br/><br/>RiTa.phones("two apples"); // returns -> t-uw ae-p-ah-l-z <br/><br/></pre>
                     </div>
                   </td>
                 </tr>
@@ -76,7 +76,7 @@
                   <td>
                     <!-- PARAMETERS  -->
 
-                    <table cellpadding="0" cellspacing="0" border="0" class="sub-table"><tr class=''><th width='25%' scope='row' class=nobold>String</th><td width='75%'>text to analyze</td></tr></table>
+                    <table cellpadding="0" cellspacing="0" border="0" class="sub-table"><tr class=''><th width='25%' scope='row' class=nobold>String</th><td width='75%'>text to analyze</td></tr><tr class=''><th width='25%' scope='row' class=nobold>Object<br>(or Map in Java)</th><td width='75%'>null</td></tr></table>
                   </td>
                 </tr>
 
@@ -86,15 +86,15 @@
                   <td>
                     <!-- RETURNS/TYPE (for variables)  -->
 
-                    <table cellpadding="0" cellspacing="0" border="0" class="sub-table"><tr class=''><th width='25%' scope='row' class=nobold>String</th><td width='75%'>e.g., '1/0/1', with 1's meaning 'stressed', and 0's meaning 'unstressed', </td></tr></table>
+                    <table cellpadding="0" cellspacing="0" border="0" class="sub-table"><tr class=''><th width='25%' scope='row' class=nobold>string</th><td width='75%'>e.g., 'ae-n  eh-l-ax-f-ax-n-t  ih-z  ey  m-ae-m-ax-l'<br/>(for 'An elephant is a mammal')</td></tr></table>
                   </td>
                 </tr>
 
-                <tr class='Related' style='display:none'>
+                <tr class='Related'>
                   <th scope="row">Related</th>
 
                   <!-- RELATED  -->
-                  <td>tmp_related</td>
+                  <td><a href="../analyze/">RiTa.analyze()</a></td>
                 </tr>
 
                 <tr class='Note' style='display:none'>
@@ -108,7 +108,7 @@
 
                   <!-- SYNTAX  -->
                   <td>
-                    <pre>RiTa.stresses(word);</pre>
+                    <pre>RiTa.phones(wordStr);<br>RiTa.phones(wordStr, options);</pre>
                   </td>
                 </tr>
 

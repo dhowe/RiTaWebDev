@@ -262,6 +262,14 @@
             <li>Significant performances improvements</li>
             <li>Newly simplified API</li>
           </ul>
+          <br>Version 2 of RiTa is a complete rewrite of the library that is smaller, faster, more use-friendly, and more easily maintained. Unfortunately, however, is not backwards-compatible with programs written with version 1.x. Nearly all of the functionality of v1 is still available (plus lots of new features), but much of the organization and many of the function names have changed. Migrating an older work to v2 is generally quite straightforward, involving a few function name changes (plus I'm happy to help if you run into problems)
+          <br><br>With that said, some of the more major changes:<br>
+          <ul>
+            <li>Nearly all features of the library are now static functions on the RiTa object. So you can access them as RiTa.XXX(), e.g., RiTa.phones(), RiTa.tokenize(), RiTa.conjugate(), and so on. This means that there is only one object to worry about importing into your programs.</li>
+            <li>The RiMarkov and RiGrammar objects are significantly improved, and are now accessed via the RiTa.markov() and RiTa.grammar() static functions. RiTa grammars are still compatible with JSON, but can now include all the features of RiScript.</li>
+            <li>RiScript is a new scripting language designed to allow authors to easily integrate static text with simple generative primitives (choices, sequences, transforms, etc.). RiScript is designed specifically for writers (for example, no quotes are required for strings) and can be run via RiTa.evaluate() or simply included in any RiTa grammar.</li>
+            <li>RiTa v2 is available for Java (via Maven and github-packages) and JavaScript (via npm and unpkg). It is also available, of course, as a library for Processing and p5.js.</li>
+          </ul>
         </div>
         <div class="col-md-2">
         </div>
